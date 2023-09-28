@@ -1,0 +1,75 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #EEE8AA;
+}
+
+.logo{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
+
+main{
+    background-color: #FFFACD;
+}
+
+.container{
+    display: flex;
+    margin: 20px;
+}
+
+.content{
+    padding: 20px;
+}
+
+.col-md-5, .col-md-12 {
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0 0 7px rgb(255, 69, 0);
+    padding: 15px;
+    margin: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #EEE8AA;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+footer h4{
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.col-md-3 a{
+    color: #000000;
+    text-decoration: none;
+}
+
+.col-md-3 a:hover{
+    color: #FF4500;
+    text-decoration: none;
+}
+
+/* Анімація */
+.animate {
+    animation: colorChange 2s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #FF4500;
+    }
+    100% {
+        color: #FFA500;
+    }
+}
+
