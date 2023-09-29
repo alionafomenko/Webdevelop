@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="Registration_styles.css">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="wrapper">
+    <form method="post">
+        <h2>Реєстрація</h2>
+        <div class="input-box">
+            <input type="text" name="email" placeholder="Електронна пошта"
+                   required>
+        </div>
+        <div class="input-box">
+            <input type="password" name="password" placeholder="Пароль"
+                   required>
+        </div>
+        <div class="input-box">
+            <input type="text" name="lastName" placeholder="Прізвище" required>
+        </div>
+        <div class="input-box">
+            <input type="text" name="name" placeholder="Ім'я" required>
+        </div>
+        <div class="input-box">
+            <input type="text" name="thirdName" placeholder="По-батькові"
+                   required>
+        </div>
+        <div class="input-box">
+            <input type="date" name="birthDate" value="2023-10-06"
+                   min="1950-01-01" max="2023-10-06" />
+        </div>
+        <div class="input-box">
+            <input list="group" name="group">
+            <datalist id="group">
+                <option value="ІА-21">ІА-21</option>
+                <option value="ІА-22">ІА-22</option>
+                <option value="ІА-23">ІА-23</option>
+                <option value="ІА-24">ІА-24</option>
+            </datalist>
+        </div>
+        <input class="fileButton" type="file">
+
+
+        <button  type="submit">Sign up</button><br/><br/>
+
+    </form>
+</div>
+</body>
+</html>

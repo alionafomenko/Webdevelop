@@ -4,7 +4,7 @@
     align-items: center;
     width: 100%;
     padding: 10px;
-    background-color: #EEE8AA;
+    background-color: #D8D8D8;
 }
 
 .logo{
@@ -17,7 +17,7 @@
 
 
 main{
-    background-color: #FFFACD;
+    background-color: #D8D8D8;
 }
 
 .container{
@@ -32,14 +32,14 @@ main{
 .col-md-5, .col-md-12 {
     border: 2px solid #000000;
     border-radius: 10px;
-    box-shadow: 0 0 7px rgb(255, 69, 0);
+    box-shadow: 0 0 10px #A9A2DE;
     padding: 15px;
     margin: 20px;
     text-align: center;
 }
 
 footer {
-    background-color: #EEE8AA;
+    background-color: #D8D8D8;
     padding: 20px;
     text-align: center;
     width: 100%;
@@ -56,7 +56,7 @@ footer h4{
 }
 
 .col-md-3 a:hover{
-    color: #FF4500;
+    color: #A9A2DE;
     text-decoration: none;
 }
 
@@ -67,10 +67,10 @@ footer h4{
 
 @keyframes colorChange {
     0% {
-        color: #FF4500;
+        color: #FBE3AA;
     }
     100% {
-        color: #FFA500;
+        color: black;
     }
 }
 
