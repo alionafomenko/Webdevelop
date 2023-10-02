@@ -43,6 +43,11 @@
     top: 8px;
 }
 
+.menu-btn{
+    margin-right: 30px;
+    margin-top: 55px;
+}
+
 .menu_box{
     display: block;
     position: fixed;
@@ -102,6 +107,7 @@
     width: 100px;
     height: auto;
     margin: 10px;
+    margin-left: 10px;
 }
 
 main{
