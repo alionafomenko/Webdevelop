@@ -38,7 +38,7 @@
     height: 26px;
     cursor: pointer;
     z-index: 2;
-    margin: 55px;
+    margin: 55px 30px;
 }
 
 .menu-btn > span,
@@ -126,18 +126,24 @@
     margin: 10px;
 }
 
-
 *{
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
 
-body{
+main {
+    background-color: #D8BFD8;
+
+}
+
+.container{
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    min-height: 100vh;
-    background: #D8BFD8;
+    justify-content: center;
+    margin: 20px;
+}
+
+.content{
+    padding: 20px;
 }
 
 .wrapper{
@@ -202,4 +208,12 @@ button{
 
 button:hover {
     scale: 1.1;
+}
+
+footer {
+    text-align: center;
+    background-color: #D8BFD8;
+    color: #000000;
+    padding: 10px;
+    margin: auto;
 }

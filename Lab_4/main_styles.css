@@ -7,10 +7,6 @@
     background-color: #D8BFD8;
 }
 
-.header h1{
-    margin-right: 90px;
-}
-
 .menu-btn{
     display: flex;
     align-items: center;
@@ -21,7 +17,7 @@
     height: 26px;
     cursor: pointer;
     z-index: 2;
-    margin: 55px;
+    margin: 55px 30px;
 }
 
 .menu-btn > span,
@@ -41,11 +37,6 @@
 .menu-btn > span::after {
     content: '';
     top: 8px;
-}
-
-.menu-btn{
-    margin-right: 30px;
-    margin-top: 55px;
 }
 
 .menu_box{
@@ -107,7 +98,6 @@
     width: 100px;
     height: auto;
     margin: 10px;
-    margin-left: 10px;
 }
 
 main{
@@ -142,6 +132,11 @@ footer {
 footer h4{
     color: #000000;
     margin-bottom: 20px;
+}
+
+footer p{
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
 .col-md-3 a{

@@ -127,10 +127,11 @@
 }
 
 *{
-    box-sizing: border-box;
     font-family: "Poppins", sans-serif;
+    text-align: center;
 }
 
+/* Стилі для головної частини сторінки */
 main {
     background-color: #D8BFD8;
 
@@ -146,73 +147,69 @@ main {
     padding: 20px;
 }
 
-.wrapper{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 450px;
-    height: 550px;
-    border-radius: 15px;
-    transition: 0.5s;
-}
-
-h2{
-    font-size: 2em;
+/* Стилі для заголовка "Контакти" */
+.title {
+    margin-bottom: 30px;
+    font-size: 30px;
     text-align: center;
-    color: black;
-    transition: 0.5s;
+    color: #000000;
 }
 
-.input-box{
-    position: relative;
-    width: 320px;
-    margin:  30px 0;
+/* Стилі для секцій з контактною інформацією */
+section {
+    margin-bottom: 20px;
 }
 
-.input-box input{
-    width: 100%;
-    height: 50px;
-    border-radius: 7px;
-    background: transparent;
-    border: 3px solid black;
-    outline: none;
-    font-size: 1em;
-    color: black;
-    padding: 0 10px 0 35px;
-    transition: 0.5s;
+/* Стилі для заголовків секцій */
+section h2 {
+    font-size: 24px;
+    color: #000000;
 }
 
-.input-box input::placeholder{
-    color: black;
+/* Стилі для адреси */
+section p {
+    font-size: 16px;
+    color: #000000;
 }
 
-button{
-    width: 100%;
-    height: 50px;
-    border-radius: 7px;
-    border: 2px solid #4B0082;
-    outline: none;
-    font-size: 1.1em;
-    color: white;
-    transition: 0.5s;
-    text-align: center;
-    background: #4B0082;
-
+/* Стилі для пошти та месенджерів */
+a {
+    text-decoration: underline;
+    color: #000000;
 }
 
-button{
-    transition: 0.5s;
+a:hover {
+    text-decoration: none;
+    color: #4B0082;
 }
 
-button:hover {
-    scale: 1.1;
-}
-
+/* Стилі для футера */
 footer {
     text-align: center;
     background-color: #D8BFD8;
     color: #000000;
     padding: 10px;
     margin: auto;
+}
+
+/* Загальні стилі для списку ul */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Стилі для списку ul li */
+ul li {
+    margin-bottom: 10px;
+}
+
+/* Додаткові стилі для посилань у списку ul */
+ul li a {
+    text-decoration: underline;
+    color: #000000;
+}
+
+ul li a:hover {
+    text-decoration: none;
+    color: #4B0082;
 }
