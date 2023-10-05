@@ -132,7 +132,6 @@
     text-align: center;
 }
 
-/* Стилі для головної частини сторінки */
 body{
     display: flex;
     flex-direction: column;
@@ -155,69 +154,41 @@ main{
     padding: 20px;
 }
 
-/* Стилі для заголовка "Контакти" */
 .title {
     margin-bottom: 30px;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     color: #000000;
 }
 
-/* Стилі для секцій з контактною інформацією */
-section {
-    margin-bottom: 20px;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-/* Стилі для заголовків секцій */
-section h2 {
-    font-size: 24px;
-    color: #000000;
+th, td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
 }
 
-/* Стилі для адреси */
-section p {
-    font-size: 16px;
-    color: #000000;
+th {
+    background-color: #f2f2f2;
 }
 
-/* Стилі для пошти та месенджерів */
-a {
-    text-decoration: underline;
-    color: #000000;
+tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-a:hover {
+.actions a {
+    margin-right: 5px;
     text-decoration: none;
-    color: #4B0082;
 }
 
-/* Стилі для футера */
 footer {
     text-align: center;
     background-color: #D8BFD8;
     color: #000000;
     padding-bottom: 20px;
 
-}
-
-/* Загальні стилі для списку ul */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-/* Стилі для списку ul li */
-ul li {
-    margin-bottom: 10px;
-}
-
-/* Додаткові стилі для посилань у списку ul */
-ul li a {
-    text-decoration: underline;
-    color: #000000;
-}
-
-ul li a:hover {
-    text-decoration: none;
-    color: #4B0082;
 }

@@ -131,9 +131,16 @@
     font-family: "Poppins", sans-serif;
 }
 
-main {
-    background-color: #D8BFD8;
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Устанавливаем минимальную высоту экрана вьюпорта */
+    margin: 0;
+}
 
+main{
+    background-color: #D8BFD8;
+    flex: 1;
 }
 
 .container{
@@ -213,6 +220,6 @@ footer {
     text-align: center;
     background-color: #D8BFD8;
     color: #000000;
-    padding: 10px;
-    margin: auto;
+    padding-bottom: 20px;
+
 }
