@@ -18,27 +18,3 @@ function sendMessage(sender) {
 
 
 }
-/*function sendMessage() {
-    const message = document.getElementById('message_1').value;
-    const chatArea = document.getElementById('chat_area_1');
-    if (message.trim() !== '') {
-        const messageElement = document.createElement('div');
-        messageElement.textContent = message;
-        chatArea.classList.add('vasya-class');
-        chatArea.appendChild(messageElement);
-        document.getElementById('message_1').value = '';
-    }
-}
-
-
-function sendMessage_2() {
-    const message = document.getElementById('message_2').value;
-    const chatArea = document.getElementById('chat_area_1');
-    if (message.trim() !== '') {
-        const messageElement = document.createElement('div');
-        messageElement.textContent = message;
-        chatArea.classList.add('petya-class');
-        chatArea.appendChild(messageElement);
-        document.getElementById('message_2').value = '';
-    }
-}*/
