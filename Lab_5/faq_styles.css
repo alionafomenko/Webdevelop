@@ -1,0 +1,184 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: #D8BFD8;
+}
+
+.header h1{
+    margin-right: 90px;
+    font-weight: 500;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.animate {
+    animation: colorChange 2s infinite alternate;
+}
+
+@keyframes colorChange {
+    0% {
+        color: #4B0082;
+    }
+    100% {
+        color: #800080;
+    }
+}
+
+.menu-btn{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right:0;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 2;
+    margin: 55px 30px;
+}
+
+.menu-btn > span,
+.menu-btn > span::before,
+.menu-btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: #000000;
+    transition-duration: .25s;
+}
+.menu-btn > span::before {
+    content: '';
+    top: -8px;
+}
+.menu-btn > span::after {
+    content: '';
+    top: 8px;
+}
+
+.menu_box{
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 5px;
+    padding: 80px 0;
+    list-style: none;
+    background-color: #DDA0DD;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition-duration: .25s;
+    z-index: 1;
+}
+
+.menu-item {
+    display: block;
+    padding: 12px 24px;
+    color: #000000;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: .25s;
+}
+.menu-item:hover {
+    background-color: #BA55D3;
+    color: #000000;
+    text-decoration: none;
+}
+
+#menu-toggle{
+    opacity: 0;
+}
+
+#menu-toggle:checked ~ .menu-btn > span{
+    transform: rotate(45deg);
+}
+#menu-toggle:checked ~ .menu-btn > span::before{
+    top: 0;
+    transform: rotate(0);
+}
+#menu-toggle:checked ~ .menu-btn > span::after{
+    top: 0;
+    transform: rotate(90deg);
+}
+#menu-toggle:checked ~ .menu_box{
+    visibility: visible;
+    right: 0;
+}
+
+.menu-btn{
+    margin-right: 20px;
+    margin-top: 55px;
+}
+
+.logo{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    width: 100px;
+    height: auto;
+    margin: 10px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Устанавливаем минимальную высоту экрана вьюпорта */
+    margin: 0;
+}
+
+main{
+    background-color: #D8BFD8;
+    flex: 1;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.content{
+    padding: 20px;
+}
+
+.questions{
+    padding-top: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.questions p{
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 28px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+
+.second_block {
+    display: none;
+}
+
+.first_block:hover .second_block {
+    display: block;
+}
+
+.second_block a{
+    font-size: 20px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-style: italic;
+}
+
+footer {
+    text-align: center;
+    background-color: #D8BFD8;
+    color: #000000;
+    padding-bottom: 20px;
+
+}
