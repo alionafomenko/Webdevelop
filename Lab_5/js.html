@@ -31,7 +31,7 @@
     <div class="container">
         <div class="content">
 
-            <script src="rectangle.js"></script>
+            <script src="js/rectangle.js"></script>
             <div class="section1">
                 <h1>Розрахунок прямокутника</h1>
                 <div>
@@ -55,33 +55,35 @@
                 <table>
                     <tr>
                         <td>
-                            <div id="chat-box_1"></div>
                             <div>
-                                <label for="message_1">Вася</label></br>
+                                <label for="message_1">Вася
+                                </label></br>
                                 <input type="text" id="message_1">
                             </div>
-                            <button onclick="sendMessage()">Відправити</button>
-                            <div id="chat-box_2"></div>
+                            <button class="button_2"
+                                    onclick="sendMessage(1)">Відправити
+                            </button>
                             <div>
-                                <label for="message_2">Петя</label></br>
+                                <label for="message_2" >Петя
+                                </label></br>
                                 <input type="text" id="message_2">
                             </div>
-                            <button onclick="sendMessage()">Відправити</button>
+                            <button class="button_2"
+                                    onclick="sendMessage(2)">Відправити
+                            </button>
 
                         </td>
-                        <td class="chat_area">
-                            <div class="chat">
-                                messages
-                            </div>
+                        <td class="chat_area" id="chat_area">
+
                         </td>
 
                     </tr>
                 </table>
             </div>
-            <script src="chat.js"></script>
+            <script src="js/chat.js"></script>
 
 
-            <script src="transliteration.js"></script>
+            <script src="js/transliteration.js"></script>
             <div class="section3">
                 <h1>Транслітерація</h1>
                 <div>
@@ -93,7 +95,7 @@
             </div>
 
 
-            <script src="dayOfWeek.js"></script>
+            <script src="js/dayOfWeek.js"></script>
             <div class="section4">
                 <h1>Обчислення дня тижня</h1>
                 <div>
