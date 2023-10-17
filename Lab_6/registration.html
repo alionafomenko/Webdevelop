@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="registration_styles.css">
     <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.rawgit.com/RobinHerbots/Inputmask/4.x/dist/jquery.inputmask.bundle.js"></script>
+
     <title>Реєстрація</title>
 </head>
 <body>
@@ -86,25 +89,15 @@
                             <option value="ІА-24">ІА-24</option>
                         </datalist>
                     </div>
-                    <div class="input-box">
-                        <div class="select-box">
-                            <div class="selected-option">
-                                <div>
-                                    <span class="iconify" data-icon="flag:gb-4x3"></span>
-                                    <strong>+44</strong>
-                                </div>
-                                <input type="tel" name="tel"
-                                       placeholder="Номер телефона">
-                            </div>
-                            <div class="options">
-                                <input type="text" class="search-box" placeholder="Search Country Name">
-                                <ol>
 
-                                </ol>
-                            </div>
-                        </div>
-                        <script src="js/telephone.js"></script>
+                    <script src="js/phone.js"></script>
+                    <div class="input-box">
+                        <input class="phone" type="tel" name="telephone"
+                               id="phone"
+                               placeholder="Номер телефона"
+                               required>
                     </div>
+
                     <input type="radio"  name="sex"
                            value="male"/>
                     <label>Чоловік</label>
