@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="registration_styles.css">
-
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
     <title>Реєстрація</title>
 </head>
 <body>
@@ -32,38 +32,78 @@
     <div class="container">
         <div class="content">
             <div class="wrapper">
-                <form method="post">
+                <form method="post" class="form">
+                    <script src="js/checker.js"></script>
                     <h2>Реєстрація</h2>
                     <div class="input-box">
-                        <input type="text" name="email" placeholder="Електронна пошта"
-                               required>
+                        <input type="text" name="email" id="email"
+                               placeholder="Електронна пошта"
+                               required oninput="checkEmail()">
                     </div>
-                    <div class="input-box">
-                        <input type="password" name="password" placeholder="Пароль"
-                               required>
+                    <div id="email_error" class="invalid"></div>
+
+                    <div class="input-box" >
+                        <input type="password" name="password"
+                               id="password" placeholder="Пароль"
+                               required oninput="checkPassword()">
                     </div>
+                    <div id="password_error" class="invalid"></div>
+
                     <div class="input-box">
-                        <input type="text" name="lastName" placeholder="Прізвище" required>
+                        <input type="text" name="lastName" id="lastName"
+                               placeholder="Прізвище" required oninput="checkName()">
                     </div>
+                    <div id="lastName_error" class="invalid"></div>
+
                     <div class="input-box">
-                        <input type="text" name="name" placeholder="Ім'я" required>
+                        <input type="text" name="name" id="name"
+                               placeholder="Ім'я"
+                               required oninput="checkName()">
                     </div>
+                    <div id="name_error" class="invalid"></div>
+
                     <div class="input-box">
-                        <input type="text" name="thirdName" placeholder="По-батькові"
-                               required>
+                        <input type="text" name="thirdName" id="thirdName"
+                               placeholder="По-батькові"
+                               required oninput="checkName()">
                     </div>
+                    <div id="thirdName_error" class="invalid"></div>
+
                     <div class="input-box">
-                        <input type="date" name="birthDate" value="2023-10-06"
-                               min="1950-01-01" max="2023-10-06" />
+                        <input type="date" name="birthDate" id="date"
+                               value="2023-10-06"
+                               min="1900-01-01" oninput="checkAge()"/>
                     </div>
+                    <div id="age_error" class="invalid"></div>
+
                     <div class="input-box">
-                        <input list="group" name="group">
+                        <input list="group" name="group"
+                               placeholder="Номер групи">
                         <datalist id="group">
                             <option value="ІА-21">ІА-21</option>
                             <option value="ІА-22">ІА-22</option>
                             <option value="ІА-23">ІА-23</option>
                             <option value="ІА-24">ІА-24</option>
                         </datalist>
+                    </div>
+                    <div class="input-box">
+                        <div class="select-box">
+                            <div class="selected-option">
+                                <div>
+                                    <span class="iconify" data-icon="flag:gb-4x3"></span>
+                                    <strong>+44</strong>
+                                </div>
+                                <input type="tel" name="tel"
+                                       placeholder="Номер телефона">
+                            </div>
+                            <div class="options">
+                                <input type="text" class="search-box" placeholder="Search Country Name">
+                                <ol>
+
+                                </ol>
+                            </div>
+                        </div>
+                        <script src="js/telephone.js"></script>
                     </div>
                     <input type="radio"  name="sex"
                            value="male"/>
