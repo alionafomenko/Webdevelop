@@ -105,11 +105,37 @@
                     <label>Жінка</label><br/>
                     <input class="fileButton" type="file" accept="image/*">
 
-                    <button  type="button" onclick="createTable()">Sign
+                    <button class="button1" type="submit" >Sign
                         up</button><br/><br/>
 
                 </form>
             </div>
+        </div>
+    </div>
+    <script src="js/table.js"></script>
+    <div class="table-container">
+        <h2 class="title">Зареєстровані користувачі</h2>
+        <table id="userTable">
+            <thead>
+            <tr>
+                <th>Вибір</th>
+                <th>Електронна пошта</th>
+                <th>Прізвище</th>
+                <th>Ім'я</th>
+                <th>По-батькові</th>
+                <th>Дата народження</th>
+                <th>Номер групи</th>
+                <th>Номер телефону</th>
+                <th>Стать</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Тут будуть рядки таблиці -->
+            </tbody>
+        </table>
+        <div>
+            <button class="button2" id="deleteRows">Видалити вибрані</button>
+            <button class="button2" id="duplicateRows">Дублювати вибрані</button>
         </div>
     </div>
 </main>
