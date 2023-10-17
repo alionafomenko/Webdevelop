@@ -1,19 +1,19 @@
 function checkEmail() {
     function validateEmail(email) {
-        var re = /\S+@\S+\.\S+/;
-        return re.test(email);
+        let error = "";
+        if (!/\S+@\S+\.\S+/.test(email)){
+            error += "Неправильно введена пошта<br/>";
+        }
+        if (/[\u0400-\u04FF]/.test(email)){
+            error += "Тільки латинські літери<br/>";
+        }
+        return error;
     }
 
     const email = document.getElementById('email').value;
     const error = document.getElementById('email_error');
-    const mistake = "Неправильно введена пошта";
 
-    if(validateEmail(email) == false){
-        error.textContent = mistake;
-
-    } else {
-        error.textContent = "";
-    }
+    error.innerHTML = validateEmail(email);
 
 
 }
@@ -28,10 +28,14 @@ function checkPassword() {
             error += "Пароль має бути від 8 до 15 символів<br/>";
         }
         if (!/[A-Z]+/.test(password)){
-            error += "В паролі має бути хоча б одна велика літера<br/>";
+            error += "В паролі має бути хоча б одна велика латинська" +
+                " літера<br/>";
         }
         if (!/[a-z]+/.test(password)){
-            error += "В паролі має бути хоча б одна маленька літера<br/>";
+            error += "В паролі має бути хоча б одна маленька латинська літера<br/>";
+        }
+        if (/[\u0400-\u04FF]/.test(password)){
+            error += "Тільки латинські літери<br/>";
         }
         return error;
 

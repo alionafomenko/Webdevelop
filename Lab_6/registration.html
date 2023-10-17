@@ -55,27 +55,26 @@
                     <div class="input-box">
                         <input type="text" name="lastName" id="lastName"
                                placeholder="Прізвище" required
-                               oninput="checkName(1)">
+                               oninput="checkName()">
                     </div>
                     <div id="lastName_error" class="invalid"></div>
 
                     <div class="input-box">
                         <input type="text" name="name" id="name"
                                placeholder="Ім'я"
-                               required oninput="checkName(2)">
+                               required oninput="checkName()">
                     </div>
                     <div id="name_error" class="invalid"></div>
 
                     <div class="input-box">
                         <input type="text" name="thirdName" id="thirdName"
                                placeholder="По-батькові"
-                               required oninput="checkName(3)">
+                               required oninput="checkName()">
                     </div>
                     <div id="thirdName_error" class="invalid"></div>
 
                     <div class="input-box">
                         <input type="date" name="birthDate" id="date"
-                               value="2023-10-06"
                                min="1900-01-01" oninput="checkAge()"/>
                     </div>
                     <div id="age_error" class="invalid"></div>
@@ -106,8 +105,7 @@
                     <label>Жінка</label><br/>
                     <input class="fileButton" type="file" accept="image/*">
 
-                   <!-- <script src="js/table.js"></script>-->
-                    <button  type="submit" onsubmit="createTable()">Sign
+                    <button  type="button" onclick="createTable()">Sign
                         up</button><br/><br/>
 
                 </form>
