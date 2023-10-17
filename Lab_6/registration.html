@@ -35,7 +35,7 @@
     <div class="container">
         <div class="content">
             <div class="wrapper">
-                <form method="post" class="form">
+                <form method="post" class="form" id="info">
                     <script src="js/checker.js"></script>
                     <h2>Реєстрація</h2>
                     <div class="input-box">
@@ -54,21 +54,22 @@
 
                     <div class="input-box">
                         <input type="text" name="lastName" id="lastName"
-                               placeholder="Прізвище" required oninput="checkName()">
+                               placeholder="Прізвище" required
+                               oninput="checkName(1)">
                     </div>
                     <div id="lastName_error" class="invalid"></div>
 
                     <div class="input-box">
                         <input type="text" name="name" id="name"
                                placeholder="Ім'я"
-                               required oninput="checkName()">
+                               required oninput="checkName(2)">
                     </div>
                     <div id="name_error" class="invalid"></div>
 
                     <div class="input-box">
                         <input type="text" name="thirdName" id="thirdName"
                                placeholder="По-батькові"
-                               required oninput="checkName()">
+                               required oninput="checkName(3)">
                     </div>
                     <div id="thirdName_error" class="invalid"></div>
 
@@ -80,7 +81,7 @@
                     <div id="age_error" class="invalid"></div>
 
                     <div class="input-box">
-                        <input list="group" name="group"
+                        <input list="group" name="group" id="groupNumber"
                                placeholder="Номер групи">
                         <datalist id="group">
                             <option value="ІА-21">ІА-21</option>
@@ -98,15 +99,16 @@
                                required>
                     </div>
 
-                    <input type="radio"  name="sex"
+                    <input type="radio"  name="sex" id="sex"
                            value="male"/>
                     <label>Чоловік</label>
                     <input type="radio" class="chooseSex" name="sex" value="female"/>
                     <label>Жінка</label><br/>
                     <input class="fileButton" type="file" accept="image/*">
 
-
-                    <button  type="submit">Sign up</button><br/><br/>
+                   <!-- <script src="js/table.js"></script>-->
+                    <button  type="submit" onsubmit="createTable()">Sign
+                        up</button><br/><br/>
 
                 </form>
             </div>

@@ -5,11 +5,9 @@ function checkEmail() {
     }
 
     const email = document.getElementById('email').value;
-    console.log(email);
     const error = document.getElementById('email_error');
     const mistake = "Неправильно введена пошта";
 
-    console.log(validateEmail(email));
     if(validateEmail(email) == false){
         error.textContent = mistake;
 
@@ -46,7 +44,7 @@ function checkPassword() {
 
 }
 
-function checkName() {
+function checkName(sender) {
     function validateName(name) {
         let error = "";
         if (/\s+/.test(name.trim())){
@@ -55,7 +53,7 @@ function checkName() {
         if (name.length > 15){
             error += "Має бути до 15 символів<br/>";
         }
-        if (/[A-Z]+/.test(name) || /[a-z]+/.test(password)){
+        if (/[A-Z]+/.test(name) || /[a-z]+/.test(name)){
             error += "Не має бути латинських літер<br/>";
         }
         return error;
@@ -72,6 +70,9 @@ function checkName() {
     error1.innerHTML = validateName(name);
     error2.innerHTML = validateName(lastName);
     error3.innerHTML = validateName(thirdName);
+
+
+
 
 }
 
