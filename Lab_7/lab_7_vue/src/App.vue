@@ -1,6 +1,7 @@
 <template>
   <header class="header">
-    <a href="main.html"><img class="logo" src="logo1.jpg" alt="Логотип"></a>
+    <a href="main.html"><img class="logo" src="./assets/logo1.jpg"
+                             alt="Логотип"></a>
     <h1 class="animate">Publishing World</h1>
     <div class="burger-menu">
       <input id="menu-toggle" type="checkbox" />
@@ -106,6 +107,7 @@ import EmailComponent from "./components/EmailComponent";
 import PasswordComponnent from "./components/PasswordComponnent";
 import NamesComponent from "@/components/NamesComponent";
 import CalendarComponent from "@/components/CalendarComponent";
+
   export default {
     name: 'App',
     components: {
@@ -142,9 +144,6 @@ import CalendarComponent from "@/components/CalendarComponent";
   color: Red;
 }
 
-.valid{
-  color: green;
-}
 
 .header h1{
   margin-right: 90px;
@@ -446,13 +445,5 @@ input[type="checkbox"] {
 .button2:hover {
   opacity: 0.7;
 }
-
-
-
-
-
-
-
-
 
 </style>
