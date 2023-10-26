@@ -1,8 +1,8 @@
 <template>
     <div class="input-box">
-        <input type="text"
+        <input type="text" v-model="thirdName" id="thirdName"
                placeholder="По-батькові"
-               required v-on:input="checkName">
+               required v-on:input="checkName" @input="getThirdName">
     </div>
     <div class="invalid">{{thirdname_error}}  </div>
 </template>
@@ -13,6 +13,7 @@
         components: {},
         data(){
             return{
+                thirdName: '',
                 thirdname_error: '',
             }
         },
@@ -35,6 +36,9 @@
                 const thirdName = event.target.value;
                 this.thirdname_error = validateName(thirdName);
             },
+            getThirdName(){
+                this.$emit('thirdName', this.thirdName)
+            }
         }
     }
 </script>

@@ -1,10 +1,10 @@
 <template>
     <div class="input-box">
-        <input type="text"
+        <input type="text" v-model="lastName" id="lastName"
                placeholder="Прізвище" required
-               v-on:input="checkName">
+               v-on:input="checkName" @input="getLastName">
     </div>
-    <div class="invalid" v-html="lastname_error"></div>
+    <div class="invalid" v-html="lastName_error"></div>
 
 </template>
 
@@ -14,7 +14,8 @@
         components: {},
         data(){
             return{
-                lastname_error: '',
+                lastName: '',
+                lastName_error: '',
             }
         },
         methods: {
@@ -35,8 +36,11 @@
                 }
 
                 const lastName = event.target.value;
-                this.lastname_error = validateName(lastName);
+                this.lastName_error = validateName(lastName);
             },
+            getLastName(){
+                this.$emit('lastName', this.lastName)
+            }
         }
     }
 </script>

@@ -1,7 +1,8 @@
 <template>
     <div class="input-box">
-        <input type="date"
-               min="1900-01-01" v-on:input="checkAge"/>
+        <input type="date" v-model="date" id="date"
+               min="1900-01-01"  max="2023-10-27" v-on:input="checkAge"
+               @input="getDate"/>
     </div>
     <div class="invalid" v-html="age_error"></div>
 </template>
@@ -12,6 +13,7 @@
         components: {},
         data(){
             return{
+                date: '',
                 age_error: ''
             }
         },
@@ -33,6 +35,9 @@
                 const date = event.target.value;
                 this.age_error = validateAge(date);
 
+            },
+            getDate(){
+                this.$emit('date', this.date)
             }
         }
     }

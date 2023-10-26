@@ -1,6 +1,6 @@
 <template>
     <div class="input-box">
-        <input type="password"
+        <input type="password" v-model="password" id="password"
                placeholder="Пароль"
                required
                v-on:input="checkPassword">
@@ -14,6 +14,7 @@
         components: {},
         data(){
             return{
+                password: '',
                 password_error: ''
             }
         },

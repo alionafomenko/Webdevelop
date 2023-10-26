@@ -1,9 +1,9 @@
 <template>
     <div class="input-box">
-        <input type="text"
+        <input type="text" v-model="email" id="email"
                placeholder="Електронна пошта"
                required
-               v-on:input="checkEmail">
+               v-on:input="checkEmail" @input="getEmail" >
     </div>
     <div class="invalid" v-html="email_error"></div>
 </template>
@@ -12,8 +12,9 @@
     export default {
         name: 'EmailComponent',
         components: {},
-        data(){
-            return{
+        data() {
+            return {
+                email: '',
                 email_error: ''
             }
         },
@@ -34,6 +35,11 @@
 
                 this.email_error = validateEmail(email);
             },
+            getEmail(){
+                this.$emit('email', this.email)
+            },
         }
+
     }
 </script>
+

@@ -24,24 +24,32 @@
     <div class="container">
       <div class="content">
         <div class="wrapper">
-          <form method="post" class="form" id="info">
+          <form class="form" id="info">
             <h2>Реєстрація</h2>
 
-            <email-component></email-component>
+            <email-component @email="showEmail"  />
 
-            <password-componnent></password-componnent>
+            <password-componnent  ></password-componnent>
 
-            <last-name-component></last-name-component>
+            <last-name-component @lastName="showLastName"
+            ></last-name-component>
 
-            <name-component></name-component>
+            <name-component @name="showName"></name-component>
 
-            <third-name-component></third-name-component>
+            <third-name-component @thirdName="showThirdName"></third-name-component>
 
-            <calendar-component></calendar-component>
+            <calendar-component @date="showDate"></calendar-component>
 
+            <div class="input-box">
+              <input class="phone" v-model="formData.phone"
+                     v-inputmask="'+38(0##) '"
+                     placeholder="Номер телефона"
+                     required>
+            </div>
 
             <div class="input-box">
               <input list="group" name="group" id="groupNumber"
+                     v-model="formData.group"
                      placeholder="Номер групи">
               <datalist id="group">
                 <option value="ІА-21">ІА-21</option>
@@ -51,22 +59,16 @@
               </datalist>
             </div>
 
-            <div class="input-box">
-              <input class="phone" type="tel" name="telephone"
-                     id="phone"
-                     placeholder="Номер телефона"
-                     required>
-            </div>
 
-            <input type="radio"  name="sex" id="sex"
+            <input type="radio"  name="sex" id="sex" v-model="formData.gender"
                    value="male"/>
             <label>Чоловік</label>
-            <input type="radio" class="chooseSex" name="sex" value="female"/>
+            <input type="radio" class="chooseSex" v-model="formData.gender"
+                   name="sex" value="female"/>
             <label>Жінка</label><br/>
-            <input class="fileButton" type="file" accept="image/*">
+            <input class="fileButton" type="file"  accept="image/*">
 
-            <button class="button1" type="submit" >Sign
-              up</button><br/><br/>
+            <button class="button1" type="button" v-on:click="registerUser">Sign up</button><br/><br/>
 
           </form>
         </div>
@@ -89,12 +91,23 @@
         </tr>
         </thead>
         <tbody>
+        <tr v-for="(u, index) in users" :key="index">
+          <td><input type="checkbox" v-model="selectedRows[index]"></td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.lastName }}</td>
+          <td>{{ u.name }}</td>
+          <td>{{ u.thirdName }}</td>
+          <td>{{ u.date }}</td>
+          <td>{{ u.group }}</td>
+          <td>{{ u.phone }}</td>
+          <td>{{ u.gender }}</td>
+        </tr>
         <!-- Тут будуть рядки таблиці -->
         </tbody>
       </table>
       <div>
-        <button class="button2" id="deleteRows">Видалити вибрані</button>
-        <button class="button2" id="duplicateRows">Дублювати вибрані</button>
+        <button class="button2" v-on:click="deleteSelectedRows">Видалити вибрані</button>
+        <button class="button2" v-on:click="duplicateSelectedRows">Дублювати вибрані</button>
       </div>
     </div>
   </main>
@@ -113,6 +126,9 @@ import NameComponent from "@/components/NameComponent";
 import LastNameComponent from "@/components/LastNameComponent";
 import ThirdNameComponent from "@/components/ThirdNameComponent";
 import CalendarComponent from "@/components/CalendarComponent";
+import inputmask from 'inputmask';
+/*
+import { maska } from 'maska';*/
 
   export default {
     name: 'App',
@@ -123,6 +139,75 @@ import CalendarComponent from "@/components/CalendarComponent";
       LastNameComponent,
       ThirdNameComponent,
       CalendarComponent
+    },
+    directives: { inputmask },
+    data(){
+      return{
+        formData: {
+          email: '',
+          lastName: '',
+          name: '',
+          thirdName: '',
+          date: '',
+          group: '',
+          phone: '',
+          gender: '',
+
+        },
+        users: [],
+        selectedRows: []
+
+      }
+
+    },
+    methods: {
+      registerUser() {
+        this.users.push({ ...this.formData });
+        this.formData = {
+          phone: '',
+          gender: '',
+          group: ''
+        };
+        document.getElementById('email').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('password').value = '';
+        document.getElementById('lastName').value = '';
+        document.getElementById('thirdName').value = '';
+        document.getElementById('date').value = '';
+      },
+      showEmail(data){
+        this.formData.email = data;
+      },
+      showLastName(data){
+        this.formData.lastName = data;
+      },
+      showName(data){
+        this.formData.name = data;
+      },
+      showThirdName(data){
+        this.formData.thirdName = data;
+      },
+      showDate(data){
+        this.formData.date = data;
+      },
+
+      deleteSelectedRows() {
+        for (let i = this.selectedRows.length - 1; i >= 0; i--) {
+          if (this.selectedRows[i]) {
+            this.users.splice(i, 1);
+          }
+        }
+        this.selectedRows = [];
+      },
+      duplicateSelectedRows() {
+        for (let i = this.selectedRows.length - 1; i >= 0; i--) {
+          if (this.selectedRows[i]) {
+            this.users.splice(i + 1, 0, { ...this.users[i] });
+          }
+        }
+        this.selectedRows = [];
+      },
+
     }
 }
 
@@ -440,6 +525,7 @@ input[type="checkbox"] {
 }
 
 .button2{
+  margin-top: 20px;
   width: 100%;
   height: 50px;
   border-radius: 7px;
