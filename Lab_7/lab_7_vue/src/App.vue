@@ -31,7 +31,11 @@
 
             <password-componnent></password-componnent>
 
-            <names-component></names-component>
+            <last-name-component></last-name-component>
+
+            <name-component></name-component>
+
+            <third-name-component></third-name-component>
 
             <calendar-component></calendar-component>
 
@@ -105,7 +109,9 @@
 <script>
 import EmailComponent from "./components/EmailComponent";
 import PasswordComponnent from "./components/PasswordComponnent";
-import NamesComponent from "@/components/NamesComponent";
+import NameComponent from "@/components/NameComponent";
+import LastNameComponent from "@/components/LastNameComponent";
+import ThirdNameComponent from "@/components/ThirdNameComponent";
 import CalendarComponent from "@/components/CalendarComponent";
 
   export default {
@@ -113,7 +119,9 @@ import CalendarComponent from "@/components/CalendarComponent";
     components: {
       EmailComponent,
       PasswordComponnent,
-      NamesComponent,
+      NameComponent,
+      LastNameComponent,
+      ThirdNameComponent,
       CalendarComponent
     }
 }
@@ -142,6 +150,8 @@ import CalendarComponent from "@/components/CalendarComponent";
 
 .invalid{
   color: Red;
+  font-size: 12px;
+  text-align: left;
 }
 
 

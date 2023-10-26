@@ -42,7 +42,7 @@
                 }
 
                 const password = event.target.value;
-                this.email_error = validatePassword(password);
+                this.password_error = validatePassword(password);
 
             },
         }
