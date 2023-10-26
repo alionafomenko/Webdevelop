@@ -42,7 +42,7 @@
 
             <div class="input-box">
               <input class="phone" v-model="formData.phone"
-                     v-inputmask="'+38(0##) '"
+                     v-mask="'(+38) 0## ###-##-##'"
                      placeholder="Номер телефона"
                      required>
             </div>
@@ -127,8 +127,6 @@ import LastNameComponent from "@/components/LastNameComponent";
 import ThirdNameComponent from "@/components/ThirdNameComponent";
 import CalendarComponent from "@/components/CalendarComponent";
 import inputmask from 'inputmask';
-/*
-import { maska } from 'maska';*/
 
   export default {
     name: 'App',
