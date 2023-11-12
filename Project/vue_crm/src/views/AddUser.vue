@@ -85,7 +85,7 @@
         methods: {
             addUser(){
                 console.log("method addUser")
-                fetch(`http://localhost:8080/add`, {
+                fetch(`http://localhost:8080/addUser`, {
                     mode: "no-cors",
                     method: 'POST',
                     headers: {

@@ -16,10 +16,21 @@ const router = createRouter({
       component: () => import('../views/BooksCatalog.vue')
     },
     {
-      path: '/edit',
-      name: 'edit',
-      component: () => import('../views/UpdateUser.vue')
+      path: '/Registration',
+      name: 'Registration',
+      component: () => import('../views/Registration.vue')
     },
+    {
+      path: '/UserForm',
+      name: 'UserForm',
+      component: () => import('../components/Registration/UserForm.vue')
+    },
+    {
+      path: '/Registration',
+      name: 'Registration',
+      component: () => import('../views/Registration.vue')
+    },
+
 
   ]
 })
