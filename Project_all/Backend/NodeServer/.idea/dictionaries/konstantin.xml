@@ -3,6 +3,7 @@
     <words>
       <w>dbconfig</w>
       <w>oracledb</w>
+      <w>sessionid</w>
     </words>
   </dictionary>
 </component>

@@ -10,8 +10,10 @@ const HTTP_PORT = 8080;
 
 
 async function request(request, response) {
+
     let cookies = parseCookies(request.headers.cookie);
     let sessionId = cookies['SESSIONID'];
+    console.log('sessionId', sessionId);
 
     let setSessionId;
     if (!sessionId) {
@@ -24,14 +26,60 @@ async function request(request, response) {
 
     console.log('data: ' + JSON.stringify(data));
 
-    if (/^\/login/.test(request.url) && request.method === 'POST') {
+    if (/^\/loginUser/.test(request.url) && request.method === 'POST') {
         let error = await callToDB.loginUser(sessionId, data.params.email, data.params.password);
+        data.error = error;
+    } else if (/^\/loginAuthor/.test(request.url) && request.method === 'POST'){
+        let error = await callToDB.loginAuthor(sessionId, data.params.email, data.params.password);
         data.error = error;
     } else if (/^\/getBooks/.test(request.url) && request.method === 'GET'){
         let books = await callToDB.getBooks();
         data.books = books;
-        data.sessionCallback = sessionId;
+    } else if (/^\/registrationUser/.test(request.url) && request.method === 'POST'){
+        let error = await callToDB.registrationUser(sessionId, data.params.name, data.params.lastName, data.params.email, data.params.password, data.params.phone);
+        data.error = error;
+    } else if (/^\/registrationAuthor/.test(request.url) && request.method === 'POST'){
+        let error = await callToDB.registrationAuthor(sessionId, data.params.name, data.params.lastName, data.params.email, data.params.password, data.params.phone);
+        data.error = error;
+    } else if (/^\/getAllUserInf/.test(request.url) && request.method === 'GET') {
+        let res = await callToDB.getAllUserInf(sessionId);
+        data.user = res.user;
+        data.order = res.order;
+    } else if (/^\/logout/.test(request.url) && request.method === 'POST') {
+        await callToDB.logout(sessionId);
+        data.error = '';
+    }  else if (/^\/addToOrder/.test(request.url) && request.method === 'POST') {
+        await callToDB.addToOrder(sessionId, data.params);
+        data.error = '';
+    } else if (/^\/sendApplication/.test(request.url) && request.method === 'POST') {
+        await callToDB.addApplication(sessionId, data.params.title, data.params.annotation);
+        data.error = '';
+    } else if (/^\/getAllAuthorInf/.test(request.url) && request.method === 'GET') {
+        let res = await callToDB.getAllAuthorInf(sessionId);
+        data.author = res.author;
+        data.application = res.application;
+    } else if (/^\/loginAdmin/.test(request.url) && request.method === 'POST'){
+        let error = await callToDB.loginAdmin(sessionId, data.params.email, data.params.password);
+        data.error = error;
+    }  else if (/^\/getUsers/.test(request.url) && request.method === 'GET'){
+        let users = await callToDB.getUsers(sessionId);
+        data.users = users;
+    } else if (/^\/getAuthors/.test(request.url) && request.method === 'GET'){
+        let authors = await callToDB.getAuthors(sessionId);
+        data.authors = authors;
+    } else if (/^\/getOrders/.test(request.url) && request.method === 'GET'){
+        let orders = await callToDB.getOrders(sessionId);
+        data.orders = orders;
+    } else if (/^\/saveBook/.test(request.url) && request.method === 'POST'){
+       await callToDB.saveBook(data.params.bId, data.params.bTitle,
+           data.params.bLanguage, data.params.bPageAmount,
+           data.params.bPrice);
+        data.error = '';
+    } else if (/^\/deleteBook/.test(request.url) && request.method === 'POST'){
+        await callToDB.deleteBook(data.params.bookId);
+        data.error = '';
     }
+
 
 
 
@@ -41,11 +89,17 @@ async function request(request, response) {
 
 function gen_response(data, setSessionId, response) {
     if (setSessionId){
-        response.setHeader('Set-Cookie', 'SESSIONID=' + setSessionId + '; Expires=Sat, 1 Jan 2050 00:00:00 GMT; Secure; HttpOnly');
+        console.log('setSessionId:', setSessionId);
+        response.setHeader('Set-Cookie', 'SESSIONID=' + setSessionId +'; Path=/');
     }
     response.setHeader('Content-Type', 'application/json');
-    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Origin', 'http://aliona:5173');
+    response.setHeader('Access-Control-Allow-Credentials', true);
+    response.setHeader('Access-Control-Allow-Headers','*')
+    response.setHeader('Access-Control-Allow-Methods','*')
     response.end(JSON.stringify(data));
+
+   /* console.log('response',data);*/
 };
 
 
@@ -66,10 +120,13 @@ function read_params(req) {
             if (req.method === 'POST') {
                 let body = '';
 
-
                 req.on('end', function () {
                     try {
-                        data.params = JSON.parse(body);
+                        if (body) {
+                            data.params = JSON.parse(body);
+                        } else {
+                            data.params = '';
+                        }
                     } catch (e) {
                         data.params = '';
                     }

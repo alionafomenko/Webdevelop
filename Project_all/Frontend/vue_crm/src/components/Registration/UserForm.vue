@@ -1,5 +1,5 @@
 <template>
-    <NavbarRegistration/>
+    <Navbar :active-page="activePage"/>
     <div class="f">
         <div class="form">
             <form v-on:submit.prevent="addUser">
@@ -19,6 +19,7 @@
                        v-model="user.email" v-on:input="checkEmail">
                 <label for="email">Електронна пошта</label>
             </div>
+                <div id="email_error" class="invalid"></div>
             <div class="form-floating">
                 <input type="password" class="form-control" id="password"
                        placeholder="Пароль" required v-model="user.password"
@@ -44,14 +45,13 @@
 
 <script>
     import VueTheMask from 'vue-the-mask'
-    import NavbarRegistration from "./NavbarRegistration.vue"
+    import Navbar from "../Main/NavbarMain.vue"
     import axios from 'axios';
 
     export default {
         name: 'UserForm',
         components: {
-            NavbarRegistration
-
+            Navbar
         },
         data(){
             return{
@@ -62,25 +62,33 @@
                     email: '',
                     password: '',
                     phone: ''
-                }
+                },
+                activePage: 'registration',
             }
         },
         methods: {
-            addUser(){
+            async addUser() {
                 console.log("method addUser")
-                fetch(`http://localhost:8080/addUser`, {
-                    mode: "no-cors",
-                    method: 'POST',
-                    body: JSON.stringify(this.user)
-                })
-                    .then(data => {
-                        console.log(data)
-                        this.$router.push("/")
-                    })
+                const res = await
+                    axios.post(`http://aliona:8080/registrationUser`,
+                    JSON.stringify(this.user), { withCredentials: true }
+                );
+                const reg_data = await res.data.error;
+                if (reg_data === 'hasalredysuchemail'){
+                    this.$router.push("/UserForm");
+                    const emailDiv = document.getElementById('email');
+                    const error = document.getElementById('email_error');
+                    emailDiv.className = 'form-control is-invalid';
+                    error.innerHTML = 'Така пошта вже існує';
+                } else {
+                    this.$router.push("/Account");
+
+                }
             },
             checkEmail() {
                 const email = document.getElementById('email').value;
                 const emailDiv = document.getElementById('email')
+
                 if (!/\S+@\S+\.\S+/.test(email) ){
                     emailDiv.className = 'form-control is-invalid';
                 } else {

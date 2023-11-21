@@ -8,17 +8,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="bookCatalog" href="/BooksCatalog">Каталог
-                книг</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="authorCatalog"
-               href="/AuthorCatalog">Каталог авторів</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="pocket" href="/Pocket">Корзина</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" id="registration" href="/Registration">
                 Реєстрація</a>
         </li>
@@ -43,6 +32,12 @@
         mounted() {
             const activePage = document.getElementById(this.activePage);
             if (activePage) {
+                const id = document.getElementById('main');
+                const registration = document.getElementById('registration');
+                const login = document.getElementById('login');
+                id.className = 'nav-link';
+                registration.className = 'nav-link';
+                login.className = 'nav-link';
                 activePage.classList.add('active');
             } else {
                 console.error(`Element with ID ${this.activePage} not found.`);

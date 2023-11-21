@@ -48,8 +48,9 @@
         methods: {
             async logUser() {
                 console.log("method log User")
-               const res = await axios.post(`http://localhost:8080/login`,
+               const res = await axios.post(`http://aliona:8080/loginUser`,
                    JSON.stringify(this.user),
+                   { withCredentials: true }
                )
                 const login_data = await res.data.error;
                 if (login_data === 'nouser'){
@@ -65,7 +66,7 @@
                     passwordDiv.className = 'form-control is-invalid';
                     this.$router.push("/UserLog");
                 } else {
-                    this.$router.push("/");
+                    this.$router.push("/Account");
                 }
 
 

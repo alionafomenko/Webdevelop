@@ -1,6 +1,6 @@
 <template>
     <div class="shadow div p-3 mb-5 bg-body-tertiary rounded" v-for="book in
-    books"  :key="book.ID">
+    books"  :key="book.ID" >
         <div class="title">
             <div class="img">
             </div>
@@ -12,7 +12,8 @@
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-success">{{book.PRICE}}
+            <button type="button" v-on:click="addToOrder(book.ID)"
+                    class="btn btn-success">{{book.PRICE}}
                 .00</button>
         </div>
     </div>
@@ -30,9 +31,15 @@
         },
         created() {
             console.log('book')
-            axios.get(`http://localhost:8080/getBooks`)
+            axios.get(`http://aliona:8080/getBooks`, { withCredentials: true })
                 .then((response) => {this.books = response.data.books;})
                 .catch((error) => {console.log(error)})
+        },
+        methods:{
+            addToOrder(bookId){
+                axios.post('http://aliona:8080/addToOrder',
+                    JSON.stringify(bookId), { withCredentials: true } )
+            }
         }
     }
 
