@@ -64,6 +64,9 @@ async function request(request, response) {
     }  else if (/^\/getUsers/.test(request.url) && request.method === 'GET'){
         let users = await callToDB.getUsers(sessionId);
         data.users = users;
+    } else if (/^\/isAdmin/.test(request.url) && request.method === 'GET'){
+        let isAdmin = await callToDB.isAdmin(sessionId);
+        data.isAdmin = isAdmin;
     } else if (/^\/getAuthors/.test(request.url) && request.method === 'GET'){
         let authors = await callToDB.getAuthors(sessionId);
         data.authors = authors;
@@ -77,6 +80,15 @@ async function request(request, response) {
         data.error = '';
     } else if (/^\/deleteBook/.test(request.url) && request.method === 'POST'){
         await callToDB.deleteBook(data.params.bookId);
+        data.error = '';
+    } else if (/^\/getApplications/.test(request.url) && request.method === 'GET'){
+        let applications = await callToDB.getApplications(sessionId);
+        data.applications = applications;
+    } else if (/^\/saveStatus/.test(request.url) && request.method === 'POST'){
+        await callToDB.saveStatus(data.params.id ,data.params.status);
+        data.error = '';
+    } else if (/^\/addBook/.test(request.url) && request.method === 'POST'){
+        await callToDB.addBook(data.params.appId );
         data.error = '';
     }
 

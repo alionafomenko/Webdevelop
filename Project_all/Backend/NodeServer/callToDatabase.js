@@ -18,6 +18,10 @@ module.exports.getAuthors = getAuthors;
 module.exports.getOrders = getOrders;
 module.exports.saveBook = saveBook;
 module.exports.deleteBook = deleteBook;
+module.exports.getApplications = getApplications;
+module.exports.saveStatus = saveStatus;
+module.exports.addBook = addBook;
+module.exports.isAdmin = isAdmin;
 
 async function connect(){
 try {
@@ -191,6 +195,25 @@ end;`, {p_sessionid: sessionId,  c_users:{ dir: oracledb.BIND_OUT, type: oracled
 }
 
 
+
+async function isAdmin(sessionId) {
+    try {
+        let result = await connection.execute(`begin
+  isadmin(p_sessionid => :p_sessionid,
+          p_isadmin => :p_isadmin);
+end;`, [sessionId,
+                {
+                    type: oracledb.DB_TYPE_VARCHAR,
+                    dir: oracledb.BIND_OUT
+                }],
+            {outFormat: oracledb.OUT_FORMAT_OBJECT});
+        return result.outBinds[0];
+    } catch (e) {
+        console.error(e);
+    }
+
+}
+
 async function getAuthors(sessionId) {
     try {
         let result = await connection.execute(`begin
@@ -230,6 +253,29 @@ end;
 }
 
 
+async function getApplications(sessionId) {
+    console.log('meth');
+    try {
+        let result = await connection.execute(`begin
+  getapplications(p_sessionid => :p_sessionid,
+                  c_applications => :c_applications);
+end;
+
+`, {p_sessionid: sessionId,  c_applications:{ dir: oracledb.BIND_OUT, type: oracledb.CURSOR }},
+            {outFormat: oracledb.OUT_FORMAT_OBJECT});
+
+        const resultSet = result.outBinds.c_applications;
+        const records = await resultSet.getRows();
+        await resultSet.close();
+        console.log(records);
+        return records;
+    } catch (e) {
+        console.error(e);
+    }
+
+}
+
+
 
 async function saveBook(bId, bTitle, bLanguage,
                         bPageAmount, bPrice) {
@@ -248,6 +294,19 @@ end;`, [bId, bTitle, bLanguage,
 
 }
 
+async function saveStatus(id, status) {
+    try {
+        await connection.execute(`begin
+  savestatus(p_satus => :p_satus,
+             p_id => :p_id);
+end;
+`, [status, id]);
+    } catch (e) {
+        console.error(e);
+    }
+
+}
+
 
 
 async function deleteBook(bookId) {
@@ -260,6 +319,19 @@ end;`, [bookId]);
     }
 
 }
+
+async function addBook(appId) {
+    try {
+        await connection.execute(`begin
+  addbook(p_appid => :p_appid);
+end;`, [appId]);
+    } catch (e) {
+        console.error(e);
+    }
+
+}
+
+
 
 async function addToOrder(sessionid, bookId) {
     try {

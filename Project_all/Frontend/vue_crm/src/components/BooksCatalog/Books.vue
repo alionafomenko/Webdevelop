@@ -2,7 +2,8 @@
     <div class="shadow div p-3 mb-5 bg-body-tertiary rounded" v-for="book in
     books"  :key="book.ID" >
         <div class="title">
-            <div class="img">
+            <div class="img text-center">
+                Обкладинка у розробці
             </div>
             <div>
                 <p>Назва: {{ book.TITLE }}</p>
@@ -67,6 +68,9 @@
         height: 160px;
         margin-right: 20px;
         background-color: #EBEBEB;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .title{

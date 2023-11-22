@@ -85,6 +85,11 @@ const router = createRouter({
       name: 'BooksTable',
       component: () => import('../views/ForAdmin/AdminTables/BooksTable.vue')
     },
+    {
+      path: '/ApplicationsTable',
+      name: 'ApplicationsTable',
+      component: () => import('../views/ForAdmin/AdminTables/ApplicationsTable.vue')
+    },
 
 
   ]

@@ -1,5 +1,5 @@
 <template>
-    <div class="tab">
+    <div class="tab" v-if="isAdmin === 'true'">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -43,9 +43,14 @@
         data() {
             return{
                 books: '',
+                isAdmin: ''
             }
         },
         created() {
+            axios.get(`http://aliona:8080/isAdmin`, { withCredentials: true })
+                .then((response) => {this.isAdmin = response.data.isAdmin;})
+                .catch((error) => {console.log(error)})
+
             axios.get(`http://aliona:8080/getBooks`, { withCredentials: true })
                 .then((response) => {this.books = response.data.books;})
                 .catch((error) => {console.log(error)})
@@ -63,7 +68,7 @@
                 axios.post(`http://aliona:8080/deleteBook`,
                     JSON.stringify({bookId}), { withCredentials: true }
                 );
-                this.$router.push('/BooksTable');
+                this.$router.go('/BooksTable');
 
             }
         }
