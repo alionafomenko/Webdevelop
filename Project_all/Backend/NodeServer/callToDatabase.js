@@ -52,7 +52,6 @@ async function loginUser(sessionId, email, password) {
     } catch (e) {
         console.error(e);
     }
-
 }
 
 async function loginAuthor(sessionId, email, password) {
